@@ -71,6 +71,13 @@ namespace OOP
         }
 
         //                  Methods:
+        public double Distance(Point other)
+        {
+            double x_distance = this.X - other.X;
+            double y_distance = this.Y - other.Y;
+            double distance = Math.Sqrt(x_distance * x_distance + y_distance * y_distance);
+            return distance;
+        }
         public void Print()
         {
             Console.WriteLine($"X = {X}, Y = {Y};");

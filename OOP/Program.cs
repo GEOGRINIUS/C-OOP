@@ -26,6 +26,8 @@ namespace OOP
             Point C = A + B;
             C.Print();
 
+            Console.WriteLine($"Рассстояние от точки 'А' до точки 'В': {A.Distance(B)}");
+
         }
     }
 }
