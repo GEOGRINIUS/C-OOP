@@ -54,6 +54,10 @@ namespace Fraction
             this.Denominator = other.Denominator;
             Console.WriteLine($"CopyConstructor:\t{GetHashCode()}");
         }
+        ~Fraction()
+        {
+            Console.WriteLine($"Destructor:\t{GetHashCode()}");
+        }
 
         //                 Operators:
         public static Fraction operator *(Fraction l, Fraction r)
@@ -72,6 +76,31 @@ namespace Fraction
             return left * right.Inverted();
         }
 
+        //            Increment/Decrement:
+        public static Fraction operator ++(Fraction obj)
+        {
+            obj.Integer++;
+            return new Fraction(obj);
+        }
+        public static Fraction operator --(Fraction obj)
+        {
+            obj.Integer--;
+            return new Fraction(obj);
+        }
+
+        //              Comparison operators:
+        public static bool operator==(Fraction l, Fraction r)
+        {
+            Fraction left = new Fraction(l);
+            Fraction right = new Fraction(r);
+            left.ToImproper();
+            right.ToImproper();
+            return left.Numerator * right.Denominator == right.Numerator * left.Denominator;
+        }
+        public static bool operator !=(Fraction left, Fraction right)
+        {
+            return !(left == right);
+        }
 
         //                   Methods:
         Fraction Reduce()
